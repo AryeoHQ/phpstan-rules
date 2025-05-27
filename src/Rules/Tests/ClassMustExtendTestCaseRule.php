@@ -14,7 +14,7 @@ use PHPStan\ShouldNotHappenException;
 /**
  * @implements Rule<Class_>
  */
-class ClassMustExtendTestCaseRule implements Rule
+final class ClassMustExtendTestCaseRule implements Rule
 {
     /**
      * {@inheritDoc}

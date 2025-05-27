@@ -15,7 +15,7 @@ use PHPStan\ShouldNotHappenException;
 /**
  * @implements Rule<ClassMethod>
  */
-class MethodNameSnakeCaseRule implements Rule
+final class MethodNameSnakeCaseRule implements Rule
 {
     public function __construct(
         private readonly ReflectionProvider $reflectionProvider,
@@ -41,16 +41,18 @@ class MethodNameSnakeCaseRule implements Rule
             return [];
         }
 
+		$scopeReflection = $scope->getClassReflection();
+
 		// Ensure that the class is concrete.
-		if ($scope->getClassReflection()->isAbstract()) {
+		if ($scopeReflection->isAbstract()) {
 			return [];
 		}
 
         // Ensure that the method's class extends the `TestCase` class.
-        $scopeReflection = $scope->getClassReflection();
-        $testCaseReflection = $this->reflectionProvider->getClass('Tests\\TestCase');
-
-        if (! $scopeReflection->isSubclassOfClass($testCaseReflection)) {
+        if (! $scopeReflection->isSubclassOfClass(
+			class: $this->reflectionProvider
+				->getClass('Tests\\TestCase')
+		)) {
             return [];
         }
 

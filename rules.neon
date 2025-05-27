@@ -1,13 +1,17 @@
 services:
-    -
-        class: Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule
-        tags:
-            - phpstan.rules.rule
-    -
-        class: Aryeo\PHPStan\Rules\Tests\MethodNamePrefixRule
-        tags:
-            - phpstan.rules.rule
-    -
-        class: Aryeo\PHPStan\Rules\Tests\MethodNameSnakeCaseRule
-        tags:
-            - phpstan.rules.rule
+	-
+		class: Aryeo\PHPStan\Rules\Enums\EnumCasePascalCaseRule
+		tags:
+			- phpstan.rules.rule
+	-
+		class: Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule
+		tags:
+			- phpstan.rules.rule
+	-
+		class: Aryeo\PHPStan\Rules\Tests\MethodNamePrefixRule
+		tags:
+			- phpstan.rules.rule
+	-
+		class: Aryeo\PHPStan\Rules\Tests\MethodNameSnakeCaseRule
+		tags:
+			- phpstan.rules.rule
