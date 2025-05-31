@@ -1,5 +1,13 @@
 parameters:
-	testCaseClass: 'Tests\\TestCase'
+	aryeo:
+		tests:
+			testCaseClass: Tests\TestCase
+parametersSchema:
+	aryeo: structure([
+		tests: structure([
+			testCaseClass: string()
+		])
+	])
 services:
 	-
 		class: Aryeo\PHPStan\Rules\Enums\EnumCasePascalCaseRule
@@ -8,7 +16,7 @@ services:
 	-
 		class: Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule
 		arguments:
-			testCaseClass: %testCaseClass%
+			testCaseClass: %aryeo.tests.testCaseClass%
 		tags:
 			- phpstan.rules.rule
 	-
