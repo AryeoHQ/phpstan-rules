@@ -5,6 +5,8 @@ services:
 			- phpstan.rules.rule
 	-
 		class: Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule
+		arguments:
+			testCaseClass: %testCaseClass%
 		tags:
 			- phpstan.rules.rule
 	-

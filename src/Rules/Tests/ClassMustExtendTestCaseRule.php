@@ -16,7 +16,13 @@ use PHPStan\ShouldNotHappenException;
  */
 final class ClassMustExtendTestCaseRule implements Rule
 {
-    /**
+	public function __construct(
+		public string $testCaseClass = 'Tests\\TestCase'
+	)
+	{
+	}
+
+	/**
      * {@inheritDoc}
      */
     public function getNodeType(): string
@@ -57,7 +63,7 @@ final class ClassMustExtendTestCaseRule implements Rule
         }
 
         // Ensure that the class extends `Tests\TestCase`.
-        if ($node->extends->toString() === 'Tests\\TestCase') {
+        if ($node->extends->toString() === $this->testCaseClass) {
             return [];
         }
 
