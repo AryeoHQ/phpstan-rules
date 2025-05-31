@@ -1,10 +1,19 @@
+conditionalTags:
+	Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule:
+		phpstan.rules.rule: %aryeo.tests.enabled%
+	Aryeo\PHPStan\Rules\Tests\MethodNamePrefixRule:
+		phpstan.rules.rule: %aryeo.tests.enabled%
+	Aryeo\PHPStan\Rules\Tests\MethodNameSnakeCaseRule:
+		phpstan.rules.rule: %aryeo.tests.enabled%
 parameters:
 	aryeo:
 		tests:
+			enabled: true
 			testCaseClass: Tests\TestCase
 parametersSchema:
 	aryeo: structure([
 		tests: structure([
+			enabled: bool()
 			testCaseClass: string()
 		])
 	])
@@ -17,17 +26,11 @@ services:
 		class: Aryeo\PHPStan\Rules\Tests\ClassMustExtendTestCaseRule
 		arguments:
 			testCaseClass: %aryeo.tests.testCaseClass%
-		tags:
-			- phpstan.rules.rule
 	-
 		class: Aryeo\PHPStan\Rules\Tests\MethodNamePrefixRule
 		arguments:
 			testCaseClass: %aryeo.tests.testCaseClass%
-		tags:
-			- phpstan.rules.rule
 	-
 		class: Aryeo\PHPStan\Rules\Tests\MethodNameSnakeCaseRule
 		arguments:
 			testCaseClass: %aryeo.tests.testCaseClass%
-		tags:
-			- phpstan.rules.rule
