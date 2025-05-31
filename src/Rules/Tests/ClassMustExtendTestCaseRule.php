@@ -17,7 +17,7 @@ use PHPStan\ShouldNotHappenException;
 final class ClassMustExtendTestCaseRule implements Rule
 {
 	public function __construct(
-		public string $testCaseClass = 'Tests\\TestCase'
+		private string $testCaseClass = 'Tests\\TestCase'
 	)
 	{
 	}

@@ -21,9 +21,13 @@ services:
 			- phpstan.rules.rule
 	-
 		class: Aryeo\PHPStan\Rules\Tests\MethodNamePrefixRule
+		arguments:
+			testCaseClass: %aryeo.tests.testCaseClass%
 		tags:
 			- phpstan.rules.rule
 	-
 		class: Aryeo\PHPStan\Rules\Tests\MethodNameSnakeCaseRule
+		arguments:
+			testCaseClass: %aryeo.tests.testCaseClass%
 		tags:
 			- phpstan.rules.rule

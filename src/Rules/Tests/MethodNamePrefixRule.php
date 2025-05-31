@@ -19,6 +19,7 @@ final class MethodNamePrefixRule implements Rule
 {
     public function __construct(
         private readonly ReflectionProvider $reflectionProvider,
+		private string $testCaseClass = 'Tests\\TestCase'
     ) {}
 
     /**
@@ -51,7 +52,7 @@ final class MethodNamePrefixRule implements Rule
 		// Ensure that the method's class extends the `TestCase` class.
         if (! $scopeReflection->isSubclassOfClass(
 			class: $this->reflectionProvider
-				->getClass('Tests\\TestCase')
+				->getClass($this->testCaseClass)
 		)) {
             return [];
         }
