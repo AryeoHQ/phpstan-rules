@@ -1,3 +1,5 @@
+parameters:
+	testCaseClass: 'Tests\\TestCase'
 services:
 	-
 		class: Aryeo\PHPStan\Rules\Enums\EnumCasePascalCaseRule
